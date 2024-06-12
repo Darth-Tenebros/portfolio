@@ -1,5 +1,6 @@
 ﻿@page
-@model IndexModel
+@using portfolio.Models
+@model portfolio.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
@@ -7,7 +8,30 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>
-        @Model.Name
-    </p>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>html_url</th>
+            <th>created at</th>
+            <th>last updated</th>
+            <th>language</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Project project in Model.Repos)
+        {
+            <tr>
+                <td>@project.name</td>
+                <td> <a href="{@project.html_url}">@project.html_url</a></td>
+                <td>@project.created_at</td>
+                <td>@project.updated_at</td>
+                <td>@project.language</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
