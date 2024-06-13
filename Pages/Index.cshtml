@@ -5,33 +5,46 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="basic-info">
+    <div class="details inner">
+        <div class="toggle-button">
+            <img src="~/img/light.png" alt="light mode button" id="light-dark-toggle" class="mode-toggle">
+        </div>
+
+        <h4>Yolisa Pingilili</h4>
+        <h5>Software developer</h5>
+        
+        <div id="links">
+            <a href="https://github.com/Darth-Tenebros" target="_blank" rel="noopener noreferrer">github</a>
+            <a href="https://www.linkedin.com/in/yolisa-pingilili-19148b210/" target="_blank" rel="noopener noreferrer">linkedin</a>
+            <a href="https://www.dropbox.com/scl/fi/vynelbp7ya430bqyzuj8e/Yolisa-Pingilili.pdf?rlkey=eea1ow2qo6r8e7gvwd6dmoabl&dl=0" target="_blank" rel="noopener noreferrer">resume</a>
+            <a href="mailto:yolisapingilili2@gmail.com">email</a>
+        </div>
+    </div>
+    <div class="glorious-me inner" id="toggle-dark">
+        <img src="~/img/me.jpg" alt="me me me" class="me">
+    </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>name</th>
-            <th>html_url</th>
-            <th>created at</th>
-            <th>last updated</th>
-            <th>language</th>
+<div class="description">
+    <p>
+        A long time ago, in a digital galaxy not so far away... <br><br>
+        <span id="desc-title">A Developer's Journey</span> <br><br>
+        Episode 01: The Code Awakens <br><br>
+        It is a time of innovation and ingenuity. In the vibrant city of Cape Town, South Africa,<br>
+        a skilled developer emerges from the shadows.<br><br>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(Project project in Model.Repos)
-        {
-            <tr>
-                <td>@project.name</td>
-                <td> <a href="{@project.html_url}">@project.html_url</a></td>
-                <td>@project.created_at</td>
-                <td>@project.updated_at</td>
-                <td>@project.language</td>
+        Yolisa Pingilili, a master of the <span class="end">back-end</span> arts, harnesses the power of <span class="end">Java, Golang,
+        <br>and C#</span>. 
+        With each line of code, he forges new pathways in the digital realm.
+        But the force of technology is ever-evolving. Recently, Yolisa has embarked on a new
+        <br>quest, delving into the depths of Golang to craft command-line marvels.
+        Join him on this epic journey as he pushes the boundaries of possibility and shapes
+        <br>the destiny of the digital universe.<br><br>
+        <span class="close">May the code be with you.</span><br>
+        
 
-            </tr>
-        }
-    </tbody>
-</table>
+    </p>
+    <img src="./img/lightsaber.png" class="lightsaber" id="lightsaber" alt="saber">
+</div>
+
