@@ -11,12 +11,12 @@ namespace portfolio.Github
 {
     public class GithubService
     {
-        // private readonly IProjectsRepository _projectsRepository;
+        private readonly IProjectsRepository _projectsRepository;
 
-        // public Github(IProjectsRepository projectsRepository)
-        // {
-        //     _projectsRepository = projectsRepository;
-        // }
+        public GithubService(IProjectsRepository projectsRepository)
+        {
+            _projectsRepository = projectsRepository;
+        }
 
         public GithubService(){}
 
@@ -36,12 +36,24 @@ namespace portfolio.Github
                 {
                     string responseData = response.Content.ReadAsStringAsync().Result;
                     repos = JsonConvert.DeserializeObject<List<Project>>(responseData);
+
+                    foreach (var project in repos)
+                    {
+                        project.Id = 0;
+                    }
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch repositories: {response.StatusCode}");
                 }
             }
+
+            foreach(Project project in repos)
+            {
+                _projectsRepository.CreateProject(project);
+            }
+
+            PrintRepos(repos);
 
             return repos;
         }
