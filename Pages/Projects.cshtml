@@ -1,0 +1,55 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Projects";
+}
+<h1>@ViewData["Title"]</h1>
+@* <h4 id="stack-header">Stack</h4> *@
+<div class="stack">
+    
+    <div class="tech">
+        <img src="./img/java.png" alt="java logo" class="logo">
+        <p>java</p>
+    </div>
+    <div class="tech">
+        <img src="./img/go.png" alt="golang logo" class="logo">
+        <p>golang</p>
+    </div>
+    <div class="tech">
+        <img src="./img/csharp.png" alt="C# logo" class="logo">
+        <p>C#</p>
+    </div>
+    <div class="tech">
+        <img src="./img/python.png" alt="python logo" class="logo">
+        <p>python</p>
+    </div>
+    <div class="tech">
+        <img src="./img/html.png" alt="html logo" class="logo">
+        <p>HTML</p>
+    </div>
+    <div class="tech">
+        <img src="./img/css.png" alt="css logo" class="logo">
+        <p>CSS</p>
+    </div>
+</div>
+
+<div class="projects">
+    <div class="project">
+        <p class="project-title">Watts-Up</p>
+        <p class="project-desc">a command line based application <br> to look at your load shedding schedule</p>
+        <p>Golang | SQL |  SQLite3 | APIs</p>
+        <a href="https://github.com/Darth-Tenebros/Watts-Up" target="_blank" rel="noopener noreferrer">Source Code</a>
+    </div>
+    <div class="project">
+        <p class="project-title">Automatic marker</p>
+        <p class="project-desc">A program to automatically <br> test input programs for correctness. <br> I used this when I was a tutor to automate marking</p>
+        <p>Python | JSON </p>
+        <a href="https://github.com/Darth-Tenebros/Automatic-Marker" target="_blank" rel="noopener noreferrer">Source Code</a>
+    </div>
+    <div class="project">
+        <p class="project-title">Tic Tac Toe</p>
+        <p class="project-desc">Play tic tac toe over a netowrk</p>
+        <p>Python | PyQt | Networking/Multi-threading</p>
+        <a href="https://github.com/Darth-Tenebros/OxO-Game" target="_blank" rel="noopener noreferrer">Source Code</a>
+    </div>
+</div>
