@@ -8,7 +8,7 @@ namespace portfolio.Interfaces
 {
     public interface IProjectsRepository
     {
-        bool ProjectsExists(int id);
+        bool ProjectsExists(string name);
         ICollection<Project> GetProjects();
         bool UpdateProject(Project project);
         bool CreateProject(Project project);

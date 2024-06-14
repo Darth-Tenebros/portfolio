@@ -27,9 +27,9 @@ namespace portfolio.Respository
             return _context.Projects.OrderBy(p => p.Id).ToList();
         }
 
-        public bool ProjectsExists(int id)
+        public bool ProjectsExists(string name)
         {
-            return _context.Projects.Any(p => p.Id == id);
+            return _context.Projects.Any(p => p.name.Equals(name));
         }
 
         public bool Save()
