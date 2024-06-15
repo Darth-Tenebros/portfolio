@@ -22,6 +22,11 @@ namespace portfolio.Respository
             return Save();
         }
 
+        public Project GetProject(string name)
+        {
+            return _context.Projects.Where(p => p.name.Equals(name)).FirstOrDefault();
+        }
+
         public ICollection<Project> GetProjects()
         {
             return _context.Projects.OrderBy(p => p.Id).ToList();

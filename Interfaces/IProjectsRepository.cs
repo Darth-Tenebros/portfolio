@@ -13,5 +13,6 @@ namespace portfolio.Interfaces
         bool UpdateProject(Project project);
         bool CreateProject(Project project);
         bool Save();
+        Project GetProject(string name);
     }
 }
