@@ -50,10 +50,17 @@ namespace portfolio.Github
 
             foreach(Project project in repos)
             {
-                _projectsRepository.CreateProject(project);
+                bool test = _projectsRepository.ProjectsExists(project.name);
+                if(test)
+                {
+                    _projectsRepository.UpdateProject(project);
+                    continue;
+                }
+                else
+                {
+                    _projectsRepository.CreateProject(project);
+                }
             }
-
-            PrintRepos(repos);
 
             return repos;
         }
