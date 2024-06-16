@@ -1,4 +1,5 @@
 ﻿@page
+@using portfolio.Models
 @model PrivacyModel
 @{
     ViewData["Title"] = "Projects";
@@ -34,22 +35,13 @@
 </div>
 
 <div class="projects">
-    <div class="project">
-        <p class="project-title">Watts-Up</p>
-        <p class="project-desc">a command line based application <br> to look at your load shedding schedule</p>
-        <p>Golang | SQL |  SQLite3 | APIs</p>
-        <a href="https://github.com/Darth-Tenebros/Watts-Up" target="_blank" rel="noopener noreferrer">Source Code</a>
-    </div>
-    <div class="project">
-        <p class="project-title">Automatic marker</p>
-        <p class="project-desc">A program to automatically <br> test input programs for correctness. <br> I used this when I was a tutor to automate marking</p>
-        <p>Python | JSON </p>
-        <a href="https://github.com/Darth-Tenebros/Automatic-Marker" target="_blank" rel="noopener noreferrer">Source Code</a>
-    </div>
-    <div class="project">
-        <p class="project-title">Tic Tac Toe</p>
-        <p class="project-desc">Play tic tac toe over a netowrk</p>
-        <p>Python | PyQt | Networking/Multi-threading</p>
-        <a href="https://github.com/Darth-Tenebros/OxO-Game" target="_blank" rel="noopener noreferrer">Source Code</a>
-    </div>
+    @foreach(Project project in Model.projects)
+    {
+        <div class="project">
+            <p class="project-title">@project.name</p>
+            <p class="project-desc">some random generic description bullshit because i forgot to fetch the actual descriptions.</p>
+            <p>@project.language</p>
+            <a href=$"{@project.html_url}" target="_blank" rel="noopener noreferrer">Source Code</a>
+        </div>
+    }
 </div>
