@@ -48,6 +48,7 @@ namespace portfolio.Github
                 }
             }
 
+            // TODO: FIX UPDATE
             foreach(Project project in repos)
             {
                 bool test = _projectsRepository.ProjectsExists(project.name);
