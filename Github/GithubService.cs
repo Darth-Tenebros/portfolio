@@ -48,14 +48,15 @@ namespace portfolio.Github
                 }
             }
 
-            // TODO: FIX UPDATE
             foreach(Project project in repos)
             {
-                bool test = _projectsRepository.ProjectsExists(project.name);
-                if(test)
+                var exists = _projectsRepository.GetProject(project.name);
+                if(exists != null)
                 {
-                    _projectsRepository.UpdateProject(project);
-                    continue;
+                    exists.description = project.description;
+                    exists.updated_at = project.updated_at;
+                    exists.language = project.language;
+                    _projectsRepository.UpdateProject(exists);
                 }
                 else
                 {
