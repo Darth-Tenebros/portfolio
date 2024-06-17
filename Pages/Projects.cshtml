@@ -40,7 +40,8 @@
         <div class="project">
             <p class="project-title">@project.name</p>
             <p class="project-desc">@project.description</p>
-            <p>@project.language</p>
+            <p>language: @project.language</p>
+            <p>last updated: @project.updated_at</p>
             <a href=$"{@project.html_url}" target="_blank" rel="noopener noreferrer">Source Code</a>
         </div>
     }
