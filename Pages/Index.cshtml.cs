@@ -11,7 +11,7 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly GithubService _githubService;
     public ICollection<Project> Repos { get; set; } = new List<Project>();
-    public string? Name {get; set;}
+    public string Name {get; set;}
 
     public IndexModel(ILogger<IndexModel> logger, GithubService githubService)
     {
