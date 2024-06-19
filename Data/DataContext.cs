@@ -15,5 +15,6 @@ namespace portfolio.Data
         }
 
         public DbSet<Project> Projects {get; set;}
+        public DbSet<Image> Images {get; set;}
     }
 }
