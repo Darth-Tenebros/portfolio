@@ -3,6 +3,8 @@ using portfolio.Data;
 using portfolio.Github;
 using portfolio.Interfaces;
 using portfolio.Respository;
+using Hangfire;
+using Hangfire.MemoryStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,16 @@ builder.Services.AddScoped<GithubService>();
 builder.Services.AddDbContext<DataContext>(options =>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddHangfire(config => 
+    config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UseMemoryStorage()
+);
+
+builder.Services.AddHangfireServer();
+
 
 var app = builder.Build();
 
@@ -32,5 +44,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseHangfireDashboard();
+
+// Add a recurring job
+RecurringJob.AddOrUpdate(
+    "my-recurring-job",
+    () => Console.WriteLine("Recurring job executed!"),
+    "*/10 * * * * *");
 
 app.Run();
