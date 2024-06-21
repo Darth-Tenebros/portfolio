@@ -14,6 +14,9 @@ namespace portfolio.Pages
     {
         private readonly ILogger<Dashboard> _logger;
         private readonly IImageRepository _imageRepository;
+        
+        [BindProperty]
+        public IFormFile file { get; set; }
 
         public Dashboard(ILogger<Dashboard> logger, IImageRepository imageRepository)
         {
@@ -25,7 +28,7 @@ namespace portfolio.Pages
         {
         }
 
-        public IActionResult Upload(IFormFile file)
+        public IActionResult OnPost()
         {
             Console.WriteLine("WE'RE IN THE METHOD");
             if (file == null || file.Length == 0)
