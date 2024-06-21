@@ -27,10 +27,12 @@ namespace portfolio.Pages
 
         public IActionResult Upload(IFormFile file)
         {
+            Console.WriteLine("WE'RE IN THE METHOD");
             if (file == null || file.Length == 0)
             {
                 return Content("File not selected");
             }
+            Console.WriteLine("WE'RE STILL IN THE METHOD");
 
             using (var ms = new MemoryStream())
             {
@@ -40,7 +42,7 @@ namespace portfolio.Pages
                     title = file.FileName,
                     image = ms.ToArray(),
                 };
-                _imageRepository.CreateImage(imageFile);
+                Console.WriteLine(_imageRepository.CreateImage(imageFile));
             }
 
             return RedirectToAction(nameof(Index));
