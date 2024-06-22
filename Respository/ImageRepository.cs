@@ -28,6 +28,11 @@ namespace portfolio.Respository
             return Save();
         }
 
+        public ICollection<Image> GetImages()
+        {
+            return _context.Images.ToList();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
