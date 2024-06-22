@@ -108,7 +108,12 @@
                 <tr>
                     <td><img src="data:image/png;base64,@(Convert.ToBase64String(@image.image))" alt="@image.title"></td>
                     <td>@image.title</td>
-                    <td><button>Delete</button></td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="title" value="@image.title" />
+                            <button type="submit" asp-page-handler="Delete">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>

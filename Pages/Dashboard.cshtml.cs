@@ -49,5 +49,17 @@ namespace portfolio.Pages
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult OnPostDelete(string title)
+        {
+            var image = _imageRepository.GetImage(title);
+            if(image == null)
+            {
+                return NotFound($"no image with title {title}");
+            }
+
+            _imageRepository.DeleteImage(image);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
