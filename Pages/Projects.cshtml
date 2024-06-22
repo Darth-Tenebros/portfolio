@@ -7,31 +7,13 @@
 
 @* <h4 id="stack-header">Stack</h4> *@
 <div class="stack">
-    
-    <div class="tech">
-        <img src="./img/java.png" alt="java logo" class="logo">
-        <p>java</p>
-    </div>
-    <div class="tech">
-        <img src="./img/go.png" alt="golang logo" class="logo">
-        <p>golang</p>
-    </div>
-    <div class="tech">
-        <img src="./img/csharp.png" alt="C# logo" class="logo">
-        <p>C#</p>
-    </div>
-    <div class="tech">
-        <img src="./img/python.png" alt="python logo" class="logo">
-        <p>python</p>
-    </div>
-    <div class="tech">
-        <img src="./img/html.png" alt="html logo" class="logo">
-        <p>HTML</p>
-    </div>
-    <div class="tech">
-        <img src="./img/css.png" alt="css logo" class="logo">
-        <p>CSS</p>
-    </div>
+    @foreach(Image image in Model.images)
+    {
+        <div class="tech">
+            <img src="data:image/png;base64,@(Convert.ToBase64String(@image.image))" alt="@image.title logo" class="logo">
+            <p>@image.title</p>
+        </div>
+    }
 </div>
 
 <div class="projects">
@@ -42,7 +24,7 @@
             <p class="project-desc">@project.description</p>
             <p>language: @project.language</p>
             <p>last updated: @project.updated_at</p>
-            <a href=$"{@project.html_url}" target="_blank" rel="noopener noreferrer">Source Code</a>
+            <a href="@project.html_url" target="_blank" rel="noopener noreferrer">Source Code</a>
         </div>
     }
 </div>

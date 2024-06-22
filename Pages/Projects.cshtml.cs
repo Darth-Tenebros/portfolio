@@ -8,18 +8,22 @@ namespace portfolio.Pages;
 public class PrivacyModel : PageModel
 {
     private readonly ILogger<PrivacyModel> _logger;
-    private IProjectsRepository _projectRepossitory;
+    private readonly IProjectsRepository _projectRepossitory;
+    private readonly IImageRepository _imageRepository;
     public ICollection<Project> projects {get; set;}
+    public ICollection<Image> images {get; set;}
 
-    public PrivacyModel(ILogger<PrivacyModel> logger, IProjectsRepository projectsRepository)
+    public PrivacyModel(ILogger<PrivacyModel> logger, IProjectsRepository projectsRepository, IImageRepository imageRepository)
     {
         _logger = logger;
         _projectRepossitory = projectsRepository;
+        _imageRepository = imageRepository;
     }
 
     public void OnGet()
     {
         projects = _projectRepossitory.GetProjects();
+        images = _imageRepository.GetImages();
     }
 }
 
