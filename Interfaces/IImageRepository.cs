@@ -10,6 +10,7 @@ namespace portfolio.Interfaces
     {
         bool CreateImage(Image image);
         bool DeleteImage(Image image);
+        Image GetImage(string title);
         ICollection<Image> GetImages();
         bool Save();
 

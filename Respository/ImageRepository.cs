@@ -28,6 +28,11 @@ namespace portfolio.Respository
             return Save();
         }
 
+        public Image GetImage(string title)
+        {
+            return _context.Images.Where(i => i.title.Equals(title)).FirstOrDefault();
+        }
+
         public ICollection<Image> GetImages()
         {
             return _context.Images.ToList();
