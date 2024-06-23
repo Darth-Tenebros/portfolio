@@ -22,6 +22,5 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        Repos = _githubService.FetchAndDisplayRepos("darth-tenebros");
     }
 }
