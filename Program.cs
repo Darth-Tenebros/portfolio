@@ -49,10 +49,13 @@ app.MapRazorPages();
 app.UseHangfireDashboard();
 
 // Add a recurring job
+#pragma warning disable CS0618 // Type or member is obsolete
 RecurringJob.AddOrUpdate(
     "fetchgithub-data",
     () => new GithubService().FetchAndDisplayRepos("darth-tenebros"),
-    "40 16 * * *"
+    "30 20 * * *", // TODO: FIND A MORE ELEGANT PLACE TO PUT THIS IN
+    TimeZoneInfo.Local
 );
+#pragma warning restore CS0618 // Type or member is obsolete
 
 app.Run();
