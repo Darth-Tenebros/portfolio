@@ -20,7 +20,7 @@ builder.Services.AddHangfire(config =>
     config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UseMemoryStorage()
+    .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 builder.Services.AddHangfireServer();
@@ -49,8 +49,9 @@ app.UseHangfireDashboard();
 
 // Add a recurring job
 RecurringJob.AddOrUpdate(
-    "my-recurring-job",
-    () => Console.WriteLine("Recurring job executed!"),
-    "*/10 * * * * *");
+    "fetchgithub-data",
+    () => new GithubService().FetchAndDisplayRepos("darth-tenebros"),
+    "40 16 * * *"
+);
 
 app.Run();
