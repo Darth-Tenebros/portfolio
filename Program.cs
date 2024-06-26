@@ -4,8 +4,6 @@ using portfolio.Github;
 using portfolio.Interfaces;
 using portfolio.Respository;
 using Hangfire;
-using Hangfire.MemoryStorage;
-using portfolio.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IProjectsRepository, ProjectsRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
-builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<GithubService>();
 builder.Services.AddDbContext<DataContext>(options =>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -50,14 +47,6 @@ app.MapRazorPages();
 
 app.UseHangfireDashboard();
 
-
-new EmailService().Send(
-    "yogatab277@gmail.com",
-    "yolisapingilili2@gmail",
-    "sendgrid email test",
-    "this is a test email using the sendgrid api.",
-    ""
-);
 
 // Add a recurring job
 #pragma warning disable CS0618 // Type or member is obsolete
