@@ -23,6 +23,10 @@ builder.Services.AddHangfire(config =>
     .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
+    options.SignIn.RequireConfirmedAccount = true
+).AddEntityFrameworkStores<DataContext>();
+
 builder.Services.AddHangfireServer();
 
 
@@ -41,6 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
