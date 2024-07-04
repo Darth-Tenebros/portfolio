@@ -5,7 +5,6 @@ using portfolio.Interfaces;
 using portfolio.Respository;
 using Hangfire;
 using Microsoft.AspNetCore.Identity;
-using portfolio.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
