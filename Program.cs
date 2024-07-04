@@ -4,6 +4,9 @@ using portfolio.Github;
 using portfolio.Interfaces;
 using portfolio.Respository;
 using Hangfire;
+using Microsoft.AspNetCore.Identity;
+using portfolio.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +26,29 @@ builder.Services.AddHangfire(config =>
     .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
-    options.SignIn.RequireConfirmedAccount = true
-).AddEntityFrameworkStores<DataContext>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+    options.SlidingExpiration = false;
+    options.LoginPath = "/Identity/Account/Login";
+});
+
+builder.Services.AddAuthorization();
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
+    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedEmail = false;
+
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+})
+.AddEntityFrameworkStores<DataContext>()
+.AddDefaultTokenProviders();
+
 
 builder.Services.AddHangfireServer();
 
@@ -49,6 +72,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseCookiePolicy();
 
 app.UseHangfireDashboard();
 
