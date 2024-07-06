@@ -1,0 +1,28 @@
+@page
+@model portfolio.Pages.LoggedIn
+@{
+    ViewData["Title"] = "LoggedIn";
+}
+
+<style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    }
+
+    div {
+        text-align: center;
+    }
+</style>
+
+<div>
+    <p>Logged in as @Model.UserName!</p>
+</div>
+
+@{
+    Layout = null;
+}
