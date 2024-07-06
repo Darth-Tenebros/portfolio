@@ -43,7 +43,7 @@
     }
 
     .form-control {
-        height: calc(1.0rem + 2px);
+        height: calc(0.5rem + 2px);
         padding: 1rem;
         font-size: 1rem;
     }
@@ -87,11 +87,16 @@
                 <h2>Use a local account to log in.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
+                <div class="form-group">
+                    <input asp-for="Input.UserName" class="form-control" />
+                    <label asp-for="Input.UserName" class="form-label"></label>
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                @* <div class="form-floating">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
+                </div> *@
                 <div class="form-floating">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                     <label asp-for="Input.Password" class="form-label"></label>
