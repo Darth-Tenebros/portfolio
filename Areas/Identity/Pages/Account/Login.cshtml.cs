@@ -107,7 +107,6 @@ namespace portfolio.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Dashboard");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -119,6 +118,11 @@ namespace portfolio.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    returnUrl = Url.Page("/LoggedIn", new { username = Input.UserName });
+                    if (string.IsNullOrEmpty(returnUrl))
+                    {
+                        throw new ArgumentException("Return URL cannot be null or empty.", nameof(returnUrl));
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 else
