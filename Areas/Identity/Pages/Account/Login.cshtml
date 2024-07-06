@@ -1,10 +1,83 @@
 ﻿@page
-@using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal
+@using portfolio.Areas.Identity.Pages.Account
 @model LoginModel
 
 @{
     ViewData["Title"] = "Log in";
 }
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .form-floating {
+        margin-bottom: 15px;
+    }
+
+    .form-floating label {
+        color: #555;
+    }
+
+    .form-control {
+        height: calc(1.0rem + 2px);
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .checkbox label {
+        font-size: 0.875rem;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.875rem;
+    }
+</style>
 
 <h1>@ViewData["Title"]</h1>
 <div class="row">
