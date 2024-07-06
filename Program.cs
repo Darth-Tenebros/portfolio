@@ -47,6 +47,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.Password.RequireLowercase = false;
     options.Password.RequiredUniqueChars = 1;
 })
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<DataContext>()
 .AddDefaultTokenProviders();
 
@@ -88,5 +89,21 @@ RecurringJob.AddOrUpdate(
     TimeZoneInfo.Local
 );
 #pragma warning restore CS0618 // Type or member is obsolete
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        await Seed.SeedUsersAndRolesAsync(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred seeding the DB.");
+    }
+}
+
 
 app.Run();
