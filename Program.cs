@@ -41,10 +41,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
 
     options.Password.RequireDigit = false;
-    options.Password.RequiredLength = 6;
-    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 17;
+    options.Password.RequireNonAlphanumeric = true;
     options.Password.RequireUppercase = false;
-    options.Password.RequireLowercase = false;
+    options.Password.RequireLowercase = true;
     options.Password.RequiredUniqueChars = 1;
 })
 .AddRoles<IdentityRole>()
