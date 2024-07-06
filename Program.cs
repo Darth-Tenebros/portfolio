@@ -77,7 +77,9 @@ app.MapRazorPages();
 
 app.UseCookiePolicy();
 
-app.UseHangfireDashboard();
+app.UseHangfireDashboard("/hangfire", new DashboardOptions {
+    Authorization = new[] {new HangfireAuthorizationFilter()}
+});
 
 
 // Add a recurring job
